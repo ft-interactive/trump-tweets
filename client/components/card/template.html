@@ -23,6 +23,15 @@
         {{ i.marketreaction | safe }}
       </div>
 
+      <div class="card-position__section">
+        <h3>Read more</h3>
+        <ul>
+          {% for link in i.links %}
+          <li><a href="{{ link.linkURL }}">{{ link.linkHeadline }}</a> <time data-o-component="o-date" class="o-date o-card__timestamp" datetime="{{ link.linkPubDate }}">{{ link.linkPubDate }}</time></li>
+          {% endfor %}
+        </ul>
+      </div>
+
       <!-- {% if i.linkurl %}<p style="text-align:right;"><a href="{{ i.linkurl }}">Full profile</a></p>{% endif %}
       {% if i.links.length > 0 %}
       <div class="card-position__onward-headline">

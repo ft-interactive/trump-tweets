@@ -62,7 +62,7 @@
     letter-spacing: 0;
     margin-top: .1em !important;
     margin-bottom: .1em !important;
-    
+
     @include oGridRespondTo(S) {
     font-size: 1.8em !important;
     letter-spacing: .01em;
@@ -75,6 +75,19 @@
 
     & a:hover {
     color: #807970 !important;
+    }
+  }
+
+  &__section {
+    margin-top: 2em;
+
+    & h3 {
+      font-family: 'MetricWeb', sans-serif;
+      font-weight: 600;
+    }
+
+    & time {
+      display: inline-block;
     }
   }
 
@@ -148,7 +161,7 @@
     & li {
     margin-bottom: 0.1em;
     }
-    
+
   }
 
   &__onward-link {
@@ -157,7 +170,7 @@
     @include oTypographySansBold(s);
     font-size: 17px !important;
 
-    
+
 
     &:hover {
     color: #807970 !important;
@@ -165,6 +178,3 @@
     }
   }
 }
-
-
-
