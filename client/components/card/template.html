@@ -24,10 +24,10 @@
       </div>
 
       <div class="card-position__section">
-        <h3>Read more</h3>
-        <ul>
+        <div class="card-position__onward-headline"><h3>Read more</h3></div>
+        <ul class="card-position__onward-links">
           {% for link in i.links %}
-          <li><a href="{{ link.linkURL }}">{{ link.linkHeadline }}</a> <time data-o-component="o-date" class="o-date o-card__timestamp" datetime="{{ link.linkPubDate }}">{{ link.linkPubDate }}</time></li>
+          <li><a class="card-position__onward-link" href="{{ link.linkURL }}">{{ link.linkHeadline }}</a> <time data-o-component="o-date" class="o-date o-card__timestamp" datetime="{{ link.linkPubDate }}">{{ link.linkPubDate }}</time></li>
           {% endfor %}
         </ul>
       </div>
