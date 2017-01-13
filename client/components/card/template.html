@@ -1,19 +1,29 @@
 {% from "components/myft-follow/button.html" import FollowButton -%}
 
 {% macro Card(i) %}
-  {% if i.name %}
+  {% if i.tweeturl %}
   <h1 class="card-position__position">{{ i.role }}</h1>
   <div class="card-position" data-o-component="o-card">
     <h2 class="card-position__name">{% if i.topicid %}<a href="https://www.ft.com/stream/peopleId/{{ i.topicid }}">{{ i.name }}</a>  {{ FollowButton(i.topicid, i.name, 'people')}}{% else %}{{ i.name }}{% endif %}</h2>
-    <figure class="card-position__image">
-      <img alt="" src="https://image.webservices.ft.com/v1/images/raw/http%3A%2F%2Fcom.ft.imagepublish.prod.s3.amazonaws.com%2F{{ i.picurl }}?source=ig&fit=scale-down&width=700"></img>
-        {% if i.picsource %}<figcaption class="o-typography-caption">
-          &#xA9;{{ i.picsource }}
-        </figcaption>{% endif %}
-    </figure>
     <div class="card-position__body">
-      {{ i.copy | safe }}
-      {% if i.linkurl %}<p style="text-align:right;"><a href="{{ i.linkurl }}">Full profile</a></p>{% endif %}
+      {{ i.tweetEmbedCode | safe }}
+
+      <div class="card-position__section">
+        <h3>Context</h3>
+        {{ i.context | safe }}
+      </div>
+
+      <div class="card-position__section">
+        <h3>Fact check</h3>
+        {{ i.factcheck | safe }}
+      </div>
+
+      <div class="card-position__section">
+        <h3>Market reaction</h3>
+        {{ i.marketreaction | safe }}
+      </div>
+
+      <!-- {% if i.linkurl %}<p style="text-align:right;"><a href="{{ i.linkurl }}">Full profile</a></p>{% endif %}
       {% if i.links.length > 0 %}
       <div class="card-position__onward-headline">
         More on {{i.name}}:
@@ -25,18 +35,14 @@
         </li>
         {% endfor %}
       </ul>
-      {% endif %}
+      {% endif %} -->
     </div>
-  </div>
-  {% elif i.role %}
-  <div class="card-position" style="background-color:#fff; margin-bottom:10px; padding:10px;">
-  	<h1 class="card-position__position-headline">{{ i.role }}</h1>
   </div>
   {% endif %}
 {% endmacro %}
 
 
-<div class="demo-container demo-container--standout">
+<!-- <div class="demo-container demo-container--standout">
 	<div class="o-card o-card--standout o-card--image-" data-o-component="o-card">
 			<div class="o-card__image o-card__image--">
 				<img src="https://image.webservices.ft.com/v1/images/raw/http%3A%2F%2Fim.ft-static.com%2Fcontent%2Fimages%2Fa60ae24b-b87f-439c-bf1b-6e54946b4cf2.img?source=o-card-demo" alt="demo image"></img>
@@ -54,4 +60,4 @@
 		</div>
 
 	</div>
-</div>
+</div> -->

@@ -5,42 +5,45 @@ import axios from 'axios';
 export default async function() {
   const d = await article();
   const flags = await getFlags();
-  const endpoint = 'http://bertha.ig.ft.com/view/publish/gss/13EB-5GbFnLx_1BjI6dIed3F9SobAetJG7gNaj2So5oA/data';
-  const cards = {};
+  const endpoint = 'http://bertha.ig.ft.com/view/publish/gss/17oaKymZ3JlNFEnmYP2YN7-F7EovLJr-xS5tMzQ79Hrc/data,options';
+  let cards = {};
   let data;
+  let options;
+  let title;
 
   try {
     const res = await axios(endpoint);
-    data = res.data;
+    data = res.data.data;
+    options = res.data.options;
+    title = res.data.options.filter((d) => d.name === 'introParagraph')[0].value;
+
   } catch (e) {
     console.log('Error getting content from Bertha');
   }
 
-  cards.unfilled = data.filter(d => d.style !== 'selected');
-
   try {
-    cards.selected = await Promise.all(data.filter(d => d.style === 'selected')
-      .map(async card => {
-        const url = `https://ig.ft.com/onwardjourney/v1/thing/${card.topicid}/json?limit=5`;
-        try {
-          const res = await axios(url);
-          card.links = res.data.items.filter(v => v.id !== d.id); // Filter this item out.
-        } catch(e) {
-          console.error(`Error getting Onward Journey for ${card.name}`);
-          console.log(url);
-          card.links = [];
-        }
-
-        return card;
-      }));
-  } catch(e) {
+    const results = await Promise.all(data.map(async function(tweet) {
+      try {
+        const response = await axios(`https://publish.twitter.com/oembed?url=${tweet.tweeturl}`);
+        tweet.tweetEmbedCode = response.data.html;
+      } catch (e) {
+        console.log('Error getting tweet embed code');
+        tweet.tweetEmbedCode = '';
+      }
+      return tweet;
+    }));
+    cards.tweets = results;
+    // later get stuff from elasticsearch and add here
+  } catch (e) {
     console.error(e);
-    cards.selected = data.filter(d => d.style === 'selected');
   }
 
   return {
     ...d,
+    title,
+    options,
     cards,
     flags,
   };
+
 }

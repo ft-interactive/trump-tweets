@@ -5,16 +5,16 @@ export default () => ({ // eslint-disable-line
 
   // canonical URL of the published page
   // https://ig.ft.com/trump-cabinet/ get filled in by the ./configure script
-  url: 'https://ig.ft.com/sites/trump-cabinet/',
+  url: 'https://ig.ft.com/sites/trump-tweets/',
 
   // To set an exact publish date do this:
   //       new Date('2016-05-17T17:11:22Z')
-  publishedDate: new Date('2017-01-12T17:55:22Z'),
+  publishedDate: new Date(),
 
-  headline: 'Donald Trump’s cabinet picks',
+  headline: 'Donald Trump’s tweets explained',
 
   // summary === standfirst (Summary is what the content API calls it)
-  summary: 'The FT guide to the incoming US administration',
+  summary: 'The FT guide to Trump\'s tweets',
 
   topic: {
     name: 'Donald Trump',
@@ -37,18 +37,16 @@ export default () => ({ // eslint-disable-line
   // Byline can by a plain string, markdown, or array of authors
   // if array of authors, url is optional
   byline: [
-    { name: 'Claire Manibog', url: 'https://www.ft.com/stream/authorsId/ZGVhNjk2NmEtN2ZkNy00NDllLTkyODAtYjE2NWNmNjg0NTcx-QXV0aG9ycw==' },
-    { name: 'Barney Jopson', url: 'https://www.ft.com/stream/authorsId/Q0ItMDAwMDc5MA==-QXV0aG9ycw==' },
-    { name: 'Ændrew Rininsland', url: 'https://www.ft.com/topics/authors/%C3%86ndrew_Rininsland' },
-    { name: 'Caroline Nevitt', url: 'https://www.ft.com/topics/authors/Caroline_Nevitt' },
-    { name: 'Martin Stabe', url: 'https://www.ft.com/stream/authorsId/Q0ItTVM1NDMyMQ==-QXV0aG9ycw==' },
+    { name: 'Person 1' },
+    { name: 'Person 2' },
+    { name: 'Person 3' },
   ],
 
   // Appears in the HTML <title>
-  title: 'Donald Trump’s cabinet picks',
+  title: 'Donald Trump’s tweets explained',
 
   // meta data
-  description: 'The FT guide to the incoming US administration',
+  description: 'The FT guide to Trump\'s tweets',
 
   /*
   TODO: Select Twitter card type -
