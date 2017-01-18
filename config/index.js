@@ -61,7 +61,12 @@ export default async function() {
     console.error(e);
   }
 
-  console.log(JSON.stringify(cards.tweets));
+  // sort in reverse chron
+  cards.tweets = cards.tweets.sort((a, b) => {
+    return b.tweeturl.split('https://twitter.com/realDonaldTrump/status/')[1] - a.tweeturl.split('https://twitter.com/realDonaldTrump/status/')[1];
+  })
+
+  // console.log(JSON.stringify(cards.tweets));
 
   return {
     ...d,
