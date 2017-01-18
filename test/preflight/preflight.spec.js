@@ -236,5 +236,11 @@ module.exports = {
   //   });
   // },
 
+  'Check that there are results on the page': client => {
+    client.elements('css selector', '.card-position', (collection) => {
+      client.assert.ok(collection.value.length > 0);
+    });
+  },
+
   '~fin~': client => client.end(),
 };
