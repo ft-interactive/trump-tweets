@@ -31,7 +31,7 @@ export default async function() {
         tweet.tweetEmbedCode = '';
       }
 
-      tweet.links = tweet.links.split(',');
+      tweet.links = (tweet.links && tweet.links.length ? tweet.links.split(',') : []);
       tweet.links = await Promise.all(tweet.links.map(async function(link) {
         const linkURL = link;
         let linkPubDate = '';
