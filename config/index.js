@@ -23,13 +23,20 @@ export default async function() {
 
   try {
     const results = await Promise.all(data.map(async function(tweet) {
-      try {
-        const response = await axios(`https://publish.twitter.com/oembed?url=${tweet.tweeturl}`);
-        tweet.tweetEmbedCode = response.data.html;
-      } catch (e) {
-        console.log('Error getting tweet embed code');
-        tweet.tweetEmbedCode = '';
-      }
+      tweet.tweetMetadata = await Promise.all(tweet.tweeturl.split(',').map(async function(tweet) {
+        let tweetEmbedCode = '';
+        try {
+          const response = await axios(`https://publish.twitter.com/oembed?url=${tweet}`);
+          tweetEmbedCode = response.data.html;
+        } catch (e) {
+          console.log('Error getting tweet embed code');
+        }
+
+        return {
+          tweetURL: tweet,
+          tweetEmbedCode,
+        }
+      }));
 
       tweet.links = (tweet.links && tweet.links.length ? tweet.links.split(',') : []);
       tweet.links = await Promise.all(tweet.links.map(async function(link) {
@@ -53,7 +60,6 @@ export default async function() {
           linkHeadline,
         }
       }));
-
       return tweet;
     }));
     cards.tweets = results;

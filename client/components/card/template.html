@@ -6,7 +6,9 @@
   <div class="card-position" data-o-component="o-card">
     <h2 class="card-position__name">{% if i.topicid %}<a href="https://www.ft.com/stream/peopleId/{{ i.topicid }}">{{ i.name }}</a>  {{ FollowButton(i.topicid, i.name, 'people')}}{% else %}{{ i.name }}{% endif %}</h2>
     <div class="card-position__body">
-      {{ i.tweetEmbedCode | safe }}
+      {% for metadata in i.tweetMetadata %}
+      {{ metadata.tweetEmbedCode | safe }}
+      {% endfor %}
 
       {% if i.context %}
       <div class="card-position__section">
