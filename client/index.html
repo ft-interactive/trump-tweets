@@ -6,9 +6,11 @@
 <p>{{ intro | safe}}</p>
 
 {# repeating card section starts #}
+<div class="o-grid-container graphic" id="trump-cards">
 {% for tweet in cards.tweets %}
 {{ Card(tweet) }}
 {% endfor %}
+</div>
 {# repeating card section ends #}
 
 {% endblock %}
