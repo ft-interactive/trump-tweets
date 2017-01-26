@@ -14,7 +14,7 @@ export default () => ({ // eslint-disable-line
   headline: 'Donald Trump’s tweets explained',
 
   // summary === standfirst (Summary is what the content API calls it)
-  summary: 'The FT guide to the president-elect’s Twitter feed',
+  summary: 'The FT guide to the US president’s Twitter feed',
 
   topic: {
     name: 'Donald Trump',
@@ -36,17 +36,15 @@ export default () => ({ // eslint-disable-line
 
   // Byline can by a plain string, markdown, or array of authors
   // if array of authors, url is optional
-  byline: [
-    { name: 'Person 1' },
-    { name: 'Person 2' },
-    { name: 'Person 3' },
-  ],
+  byline: [{
+    name: 'FT reporters',
+  }],
 
   // Appears in the HTML <title>
   title: 'Donald Trump’s tweets explained',
 
   // meta data
-  description: 'The FT guide to the president-elect’s Twitter feed',
+  description: 'The FT guide to the US president’s Twitter feed',
 
   /*
   TODO: Select Twitter card type -
