@@ -52,6 +52,8 @@
   .twitter-tweet.twitter-tweet-rendered {
     margin-left: auto;
     margin-right: auto;
+    width: 100% !important;
+    max-width: none !important;
   }
 
   &__position {
@@ -90,11 +92,19 @@
   }
 
   &__section {
-    margin-top: 2em;
+    margin-top: 1em;
 
     & h3 {
       font-family: 'MetricWeb', sans-serif;
       font-weight: 600;
+    }
+
+    &_byline {
+      font-family: Georgia-Italic;
+      font-size: 14px;
+      color: #26747A;
+      letter-spacing: 0.01px;
+      line-height: 22px;
     }
   }
 
@@ -164,20 +174,28 @@
 
   &__onward-links {
     margin-bottom: 1.5em !important;
+    color: #736C65 !important;
+
+    border-left: 4px solid getColor('pink-tint3');
+    padding-left: 30px !important;
 
     & li {
-    margin-bottom: 0.1em;
+      margin-bottom: 0.1em;
+
+      time {
+        padding-top: 0;
+      }
     }
 
   }
 
   &__onward-link {
-    color: getColor('grey-tint5') !important;
     border-bottom: none !important;
-    @include oTypographySansBold(s);
     font-size: 17px !important;
-
-
+    font-family: Metric-Regular;
+    color: #736C65 !important;
+    letter-spacing: 0.01px;
+    line-height: 16px;
 
     &:hover {
     color: #807970 !important;

@@ -32,14 +32,14 @@
       {% endif %}
 
       {% if i.bylines %}
-      <div class="card-position__section">
+      <div class="card-position__section card-position__section_byline">
         <i>— {{ i.bylines | md(true) }}</i>
       </div>
       {% endif %}
 
       {% if i.links.length > 0 %}
       <div class="card-position__section">
-        <div class="card-position__onward-headline"><h3>Read more</h3></div>
+        <!-- <div class="card-position__onward-headline"><h3>Read more</h3></div> -->
         <ul class="card-position__onward-links">
           {% for link in i.links %}
           <li><a class="card-position__onward-link" href="{{ link.linkURL }}">{{ link.linkHeadline }}</a> <time data-o-component="o-date" class="o-date o-card__timestamp article__timestamp" datetime="{{ link.linkPubDate | isotime }}">{{ link.linkPubDate | ftdate }}</time></li>
