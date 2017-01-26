@@ -38,6 +38,14 @@
   font-weight: 600;
 }
 
+.o-typography-body-wrapper p {
+  font-family: Georgia;
+  font-size: 16px;
+  color: #505050 ;
+  letter-spacing: 0.02px;
+  line-height: 22px;
+}
+
 .card-position {
   @include oCard;
   background: #FDF8F2;
@@ -100,7 +108,8 @@
     }
 
     &_byline {
-      font-family: Georgia-Italic;
+      font-family: Georgia, serif;
+      font-style: italic;
       font-size: 14px;
       color: #26747A;
       letter-spacing: 0.01px;
@@ -176,7 +185,7 @@
     margin-bottom: 1.5em !important;
     color: #736C65 !important;
 
-    border-left: 4px solid getColor('pink-tint3');
+    border-left: 1px solid #736C65;
     padding-left: 30px !important;
 
     & li {
