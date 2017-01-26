@@ -49,7 +49,7 @@ export default async function() {
           const response = await axios(`http://next-elastic.ft.com/v3_api_v2/item/${linkUIUD}`);
 
           linkPubDate = response.data._source.publishedDate;
-          linkHeadline = response.data._source.titles[response.data._source.titles.length - 1];
+          linkHeadline = response.data._source.title;
         } catch (e) {
           console.log('Error pinging Next API', e);
         }
