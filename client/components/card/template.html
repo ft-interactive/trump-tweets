@@ -2,49 +2,78 @@
 
 {% macro Card(i) %}
   {% if i.tweeturl and (i.context or i.reaction or i.bylines) %}
-  <h1 class="card-position__position">{{ i.role }}</h1>
   <div class="card-position" data-o-component="o-card">
-    <h2 class="card-position__name">{% if i.topicid %}<a href="https://www.ft.com/stream/peopleId/{{ i.topicid }}">{{ i.name }}</a>  {{ FollowButton(i.topicid, i.name, 'people')}}{% else %}{{ i.name }}{% endif %}</h2>
     <div class="card-position__body">
-      {% for metadata in i.tweetMetadata %}
-      {{ metadata.tweetEmbedCode | safe }}
-      {% endfor %}
+      <div class="o-grid-row">
+        <div data-o-grid-colspan="S12 M6 L4">
+          {% for metadata in i.tweetMetadata %}
+          {{ metadata.tweetEmbedCode | safe }}
+          {% endfor %}
+        </div>
 
-      {% if i.context %}
-      <div class="card-position__section">
-        <h3>Context</h3>
-        {{ i.context | safe }}
-      </div>
-      {% endif %}
+        {% if i.context %}
+        <div data-o-grid-colspan="S12 M6 L4">
+          <div class="card-position__section">
+            <h3>Context</h3>
+            {{ i.context | safe }}
+          </div>
+        </div>
+        {% endif %}
 
-      {% if i.factcheck %}
-      <div class="card-position__section">
-        <h3>Fact Check</h3>
-        {{ i.factcheck | safe }}
+        {% if i.reaction %}
+        <div data-o-grid-colspan="Shide Mhide L4">
+          <div class="card-position__section">
+            <h3>Reaction</h3>
+            {{ i.reaction | safe }}
+
+            {% if i.bylines %}
+            <div class="card-position__section card-position__section_byline">
+              <i>— {{ i.bylines | md(true) }}</i>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        {% endif %}
       </div>
-      {% endif %}
+
+      <div class="o-grid-row">
+        {% if i.links.length > 0 %}
+        <div data-o-grid-colspan="S12 M6 L4 Loffset4 Lpush4">
+          <div class="card-position__section">
+            <!-- <div class="card-position__onward-headline"><h3>Read more</h3></div> -->
+            <ul class="card-position__onward-links">
+              {% for link in i.links %}
+              <li><a class="card-position__onward-link" href="{{ link.linkURL }}">{{ link.linkHeadline }}</a> <time data-o-component="o-date" class="o-date o-card__timestamp article__timestamp" datetime="{{ link.linkPubDate | isotime }}">{{ link.linkPubDate | ftdate }}</time></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        {% endif %}
+
+        {% if i.factcheck %}
+        <div data-o-grid-colspan="S12 M6 L4 Lpull4">
+          <div class="card-position__section">
+            <h3>Fact Check</h3>
+            {{ i.factcheck | safe }}
+          </div>
+        </div>
+        {% endif %}
+      </div>
 
       {% if i.reaction %}
-      <div class="card-position__section">
-        <h3>Reaction</h3>
-        {{ i.reaction | safe }}
-      </div>
-      {% endif %}
+      <div class="o-grid-row">
+        <div data-o-grid-colspan="S12 M6 Moffset6 Lhide">
+          <div class="card-position__section">
+            <h3>Reaction</h3>
+            {{ i.reaction | safe }}
 
-      {% if i.bylines %}
-      <div class="card-position__section card-position__section_byline">
-        <i>— {{ i.bylines | md(true) }}</i>
-      </div>
-      {% endif %}
-
-      {% if i.links.length > 0 %}
-      <div class="card-position__section">
-        <!-- <div class="card-position__onward-headline"><h3>Read more</h3></div> -->
-        <ul class="card-position__onward-links">
-          {% for link in i.links %}
-          <li><a class="card-position__onward-link" href="{{ link.linkURL }}">{{ link.linkHeadline }}</a> <time data-o-component="o-date" class="o-date o-card__timestamp article__timestamp" datetime="{{ link.linkPubDate | isotime }}">{{ link.linkPubDate | ftdate }}</time></li>
-          {% endfor %}
-        </ul>
+            {% if i.bylines %}
+            <div class="card-position__section card-position__section_byline">
+              <i>— {{ i.bylines | md(true) }}</i>
+            </div>
+            {% endif %}
+          </div>
+        </div>
       </div>
       {% endif %}
     </div>
