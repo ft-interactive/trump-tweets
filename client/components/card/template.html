@@ -1,7 +1,7 @@
 {% from "components/myft-follow/button.html" import FollowButton -%}
 
 {% macro Card(i) %}
-  {% if i.tweeturl and (i.context or i.marketreaction or i.bylines) %}
+  {% if i.tweeturl and (i.context or i.reaction or i.bylines) %}
   <h1 class="card-position__position">{{ i.role }}</h1>
   <div class="card-position" data-o-component="o-card">
     <h2 class="card-position__name">{% if i.topicid %}<a href="https://www.ft.com/stream/peopleId/{{ i.topicid }}">{{ i.name }}</a>  {{ FollowButton(i.topicid, i.name, 'people')}}{% else %}{{ i.name }}{% endif %}</h2>
@@ -24,10 +24,10 @@
       </div>
       {% endif %}
 
-      {% if i.marketreaction %}
+      {% if i.reaction %}
       <div class="card-position__section">
         <h3>Reaction</h3>
-        {{ i.marketreaction | safe }}
+        {{ i.reaction | safe }}
       </div>
       {% endif %}
 
