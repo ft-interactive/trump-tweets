@@ -65,13 +65,13 @@ export default () => ({ // eslint-disable-line
   // socialSummary: 'The FT guide to the US president’s Twitter feed',
 
   // TWITTER
-  twitterImage: 'https://www.ft.com/__origami/service/image/v2/images/raw/http%3A%2F%2Fig.ft.com%2Fsites%2Ftrump-tweets%2Fimages%2Fsocial.jpg?source=ig&width=600',
+  twitterImage: 'https://www.ft.com/__origami/service/image/v2/images/raw/http%3A%2F%2Fig.ft.com%2Fsites%2Ftrump-tweets%2Fimages%2Ftrump_twitter_twitter.jpg?source=ig&width=600',
   // twitterCreator: '@individual's_account',
   tweetText: 'Donald Trump’s tweets explained: The FT guide to the US president’s Twitter feed',
   twitterHeadline: 'Donald Trump’s tweets explained: The FT guide to the US president’s Twitter feed',
 
   // FACEBOOK
-  facebookImage: 'https://www.ft.com/__origami/service/image/v2/images/raw/http%3A%2F%2Fig.ft.com%2Fsites%2Ftrump-tweets%2Fimages%2Fsocial.jpg?source=ig&width=600',
+  facebookImage: 'https://www.ft.com/__origami/service/image/v2/images/raw/http%3A%2F%2Fig.ft.com%2Fsites%2Ftrump-tweets%2Fimages%2Ftrump_twitter_face.jpg?source=ig&width=600',
   facebookHeadline: 'Donald Trump’s tweets explained',
 
   tracking: {
