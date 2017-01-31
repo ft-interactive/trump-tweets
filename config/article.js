@@ -61,8 +61,8 @@ export default () => ({ // eslint-disable-line
   */
   // General social
   // socialImage: '',
-  // socialHeadline: 'Donald Trump’s tweets explained',
-  // socialSummary: 'The FT guide to the US president’s Twitter feed',
+  socialHeadline: 'Donald Trump’s tweets explained: The FT guide to the US president’s Twitter feed',
+  // socialSummary: '',
 
   // TWITTER
   twitterImage: 'https://www.ft.com/__origami/service/image/v2/images/raw/http%3A%2F%2Fig.ft.com%2Fsites%2Ftrump-tweets%2Fimages%2Ftrump_twitter_twitter.jpg?source=ig&width=600',
