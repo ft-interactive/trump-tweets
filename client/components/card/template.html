@@ -3,7 +3,7 @@
 {% macro Card(i) %}
   {% if i.tweeturl and (i.context or i.reaction or i.bylines) %}
   <h1 class="card-position__position">{{ i.role }}</h1>
-  <div class="card-position" data-o-component="o-card">
+  <div class="card-position" data-o-component="o-card" id="{{i.tweetMetadata[0].tweetId}}">
     <h2 class="card-position__name">{% if i.topicid %}<a href="https://www.ft.com/stream/peopleId/{{ i.topicid }}">{{ i.name }}</a>  {{ FollowButton(i.topicid, i.name, 'people')}}{% else %}{{ i.name }}{% endif %}</h2>
     <div class="card-position__body">
       {% for metadata in i.tweetMetadata %}
