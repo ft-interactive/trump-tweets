@@ -13,7 +13,7 @@ export default async function() {
 
   try {
     const res = await axios(endpoint);
-    data = res.data.data;
+    data = res.data.data.filter(d => d.revised);;
     options = res.data.options;
     intro = res.data.options.filter((d) => d.name === 'introParagraph')[0].value;
 
