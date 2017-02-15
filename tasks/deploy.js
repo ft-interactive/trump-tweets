@@ -61,11 +61,14 @@ process.on('unhandledRejection', error => {
     };
   })();
 
-  const isProd = (branchName === 'master');
+  let isProd = (branchName === 'master');
+  if (argv.preview) {
+    isProd = false;
+  }
 
   // decide where to upload to
   const bucketName = isProd ? process.env.BUCKET_NAME_PROD : process.env.BUCKET_NAME_DEV;
-  const remotePrefix = isProd ? `v1/${githubRepo}/` : `v1/${githubRepo}/${branchName}/`;
+  const remotePrefix = argv.preview ? `v1/${githubRepo}/PREVIEW/${branchName}/` : isProd ? `v1/${githubRepo}/` : `v1/${githubRepo}/${branchName}/`;
 
   // tell user what we're going to sync
   console.log(
@@ -129,7 +132,7 @@ process.on('unhandledRejection', error => {
 
 
   // await confirmation
-  if (argv.confirm || await input.confirm('Continue?', { default: false })) {
+  if (argv.confirm || argv.preview || await input.confirm('Continue?', { default: false })) {
     let uploadCount = 0;
 
     const spinner = ora({
