@@ -14,7 +14,7 @@ export default () => ({ // eslint-disable-line
   headline: 'Donald Trump’s tweets explained',
 
   // summary === standfirst (Summary is what the content API calls it)
-  summary: 'The FT’s annotated guide to interpreting the US president’s Twitter feed',
+  summary: 'The FT’s annotated guide to the US president’s Twitter feed',
 
   topic: {
     name: 'Donald Trump',
@@ -44,7 +44,7 @@ export default () => ({ // eslint-disable-line
   title: 'Donald Trump’s tweets explained',
 
   // meta data
-  description: 'The FT’s annotated guide to interpreting the US president’s Twitter feed',
+  description: 'The FT’s annotated guide to the US president’s Twitter feed',
 
   /*
   TODO: Select Twitter card type -
