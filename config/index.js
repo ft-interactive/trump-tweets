@@ -29,7 +29,7 @@ export default async function() {
         try {
           const response = await axios(`https://publish.twitter.com/oembed?url=${tweet}`);
           tweetEmbedCode = response.data.html;
-          tweetId = response.data.url.split('https://twitter.com/realDonaldTrump/status/')[1];
+          tweetId = response.data.url.split(`${response.data.author_url}/status/`)[1];
         } catch (e) {
           console.log('Error getting tweet embed code');
         }
