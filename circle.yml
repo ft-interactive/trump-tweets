@@ -16,7 +16,7 @@ dependencies:
 
 test:
   post:
-    - if [[ $PREVIEW == "true" ]]; then npm run preflight || echo "WARNING: preflight failed!"; else npm run preflight; fi
+    - if [[ $PREVIEW == "true" ]]; then npm run preflight || echo WARNING - preflight failed; else npm run preflight; fi
 
 deployment:
   s3: # this is just a custom name, could be anything
