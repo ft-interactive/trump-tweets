@@ -1,6 +1,8 @@
 import article from './article';
 import getFlags from './flags';
 import axios from 'axios';
+import signedFetch from 'signed-aws-es-fetch';
+import dotenv from 'dotenv';
 
 export default async function() {
   const d = await article();
@@ -10,6 +12,8 @@ export default async function() {
   let data;
   let options;
   let intro;
+
+  dotenv.config();
 
   try {
     const res = await axios(endpoint);
@@ -49,10 +53,11 @@ export default async function() {
 
         try {
           const linkUIUD = linkURL.split('https://www.ft.com/content/')[1];
-          const response = await axios(`http://next-elastic.ft.com/v3_api_v2/item/${linkUIUD}`);
+          const response = await signedFetch(`http://next-elastic.ft.com/v3_api_v2/item/${linkUIUD}`)
+            .then(d => d.json());
 
-          linkPubDate = response.data._source.publishedDate;
-          linkHeadline = response.data._source.title;
+          linkPubDate = response._source.publishedDate;
+          linkHeadline = response._source.title;
         } catch (e) {
           console.log('Error pinging Next API', e);
         }
