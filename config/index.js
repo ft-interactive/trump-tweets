@@ -1,6 +1,7 @@
 import article from './article';
 import getFlags from './flags';
 import axios from 'axios';
+import signedFetch from 'signed-aws-es-fetch';
 
 export default async function() {
   const d = await article();
@@ -49,7 +50,9 @@ export default async function() {
 
         try {
           const linkUIUD = linkURL.split('https://www.ft.com/content/')[1];
-          const response = await axios(`http://next-elastic.ft.com/v3_api_v2/item/${linkUIUD}`);
+          const response = await signedFetch(`http://next-elastic.ft.com/v3_api_v2/item/${linkUIUD}`);
+
+          console.log(response);
 
           linkPubDate = response.data._source.publishedDate;
           linkHeadline = response.data._source.title;
