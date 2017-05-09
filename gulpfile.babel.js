@@ -113,12 +113,12 @@ function getBundlers(useWatchify) {
         //    2. uncomment code below
         //
         // skip sourcemap creation if we're in 'serve' mode
-        // if (useWatchify) {
-        //   stream = stream
-        //    .pipe(vinylBuffer())
-        //    .pipe(gulpsourcemaps.init({ loadMaps: true }))
-        //    .pipe(gulpsourcemaps.write('./'));
-        // }
+        if (useWatchify) {
+          stream = stream
+           .pipe(vinylBuffer())
+           .pipe(gulpsourcemaps.init({ loadMaps: true }))
+           .pipe(gulpsourcemaps.write('./'));
+        }
 
         return stream.pipe(gulp.dest('dist'));
       },
@@ -216,7 +216,7 @@ gulp.task('html', () =>
     .pipe(htmlmin({
       collapseWhitespace: true,
       processConditionalComments: true,
-      minifyJS: true,
+      minifyJS: false,
     }))
     .pipe(gulp.dest('dist'))
 );
